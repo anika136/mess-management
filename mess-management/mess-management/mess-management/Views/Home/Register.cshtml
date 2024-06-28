@@ -1,0 +1,57 @@
+﻿@model .Models.RegisterViewModel
+
+@{
+    ViewBag.Title = "Register";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" type="text/css" href="~/Content/Styles.css" />
+</head>
+<body>
+    <div class="navbar">
+        <a href="@Url.Action("Index", "Home")">Home</a>
+        <a href="@Url.Action("Login", "Home")">Login</a>
+    </div>
+    <div class="register-container">
+        <h2>Register</h2>
+        @using (Html.BeginForm("Register", "Account", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                @Html.LabelFor(m => m.FullName)
+                @Html.TextBoxFor(m => m.FullName, new { @class = "form-control", @required = "required" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Email)
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @type = "email", @required = "required" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Password)
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control", @required = "required" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.NID)
+                @Html.TextBoxFor(m => m.NID, new { @class = "form-control", @required = "required" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Phone)
+                @Html.TextBoxFor(m => m.Phone, new { @class = "form-control", @required = "required" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Role)
+                @Html.DropDownListFor(m => m.Role, new SelectList(new List<SelectListItem>
+                {
+                    new SelectListItem { Text = "User", Value = "User" },
+                    new SelectListItem { Text = "Manager", Value = "Manager" }
+                }), new { @class = "form-control", @required = "required" })
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+        }
+    </div>
+</body>
+</html>

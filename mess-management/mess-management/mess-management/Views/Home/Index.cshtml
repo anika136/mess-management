@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" type="text/css" href="~/Content/Styles.css" />
+</head>
+<body>
+    <div class="navbar">
+        <a href="@Url.Action("Index", "Home")">Home</a>
+        <a href="@Url.Action("Login", "Home")">Login</a>
+    </div>
+    <div class="banner">
+        <img src="~/Content/images/banner.jpeg" alt="Banner Image" class="banner-img">
+        
+    </div>
+</body>
+</html>
